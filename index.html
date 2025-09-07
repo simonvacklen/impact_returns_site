@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Impact Returns</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f6f8fa;
+      color: #233146;
+    }
+    .header {
+      background: #003366;
+      color: white;
+      padding: 24px 0;
+      text-align: center;
+      font-size: 2rem;
+      letter-spacing: 0.07em;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    }
+    .container {
+      display: flex;
+      min-height: 80vh;
+    }
+    .sidebar {
+      background: #eef2fa;
+      padding: 0;
+      width: 220px;
+      border-right: 2px solid #dee5ee;
+    }
+    .side-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .side-menu li {
+      padding: 20px 28px;
+      cursor: pointer;
+      border-bottom: 1px solid #d7e0ef;
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+    .side-menu li.active, .side-menu li:hover {
+      background: #d7e0ef;
+    }
+    .main {
+      flex: 1;
+      padding: 40px 48px;
+      min-width: 0;
+      animation: fadein 0.5s;
+    }
+    @keyframes fadein {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .app-flex {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .steps-table {
+      border-collapse: collapse;
+      min-width: 330px;
+      margin-bottom: 12px;
+    }
+    .steps-table td, .steps-table th {
+      padding: 18px 16px;
+      border-bottom: 1px solid #ccc;
+      font-size: 1.07em;
+    }
+    .steps-table td.icon-cell {
+      text-align: center;
+      width: 54px;
+    }
+    .embed-app-iframe {
+      min-width: 340px;
+      width: 420px;
+      height: 340px;
+      border: 1.5px solid #003366;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,51,102,0.12);
+    }
+    @media (max-width: 900px) {
+      .container {flex-direction: column;}
+      .sidebar {width: 100%;}
+      .main {padding: 20px 10px;}
+      .app-flex {flex-direction: column;}
+      .embed-app-iframe {width: 100%; min-width: unset;}
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <!-- SVG logo: Impact Returns -->
+    <svg height="36" viewBox="0 0 320 36" style="vertical-align:middle; margin-right:18px;">
+      <rect width="36" height="36" rx="8" fill="#0088cc"></rect>
+      <text x="18" y="24" fill="#fff" font-size="20" text-anchor="middle" font-family="Arial" font-weight="bold">IR</text>
+    </svg>
+    Impact Returns
+  </div>
+
+  <div class="container">
+    <nav class="sidebar">
+      <ul class="side-menu">
+        <li class="active" data-page="home">Home</li>
+        <li data-page="app">App</li>
+        <li data-page="blog">Blog</li>
+        <li data-page="contact">Contact</li>
+      </ul>
+    </nav>
+    <main class="main" id="main-content">
+      <!-- Default: Home -->
+      <h1>Welcome to Impact Returns</h1>
+      <p>
+        Where all your dreams come true.<br>
+        We provide innovative solutions for maximizing your returns and ensuring sustainable impact in today’s dynamic business landscape.
+        <br><br>
+        Partner with us to unlock your organization’s true potential, leverage expert insights, and achieve exceptional outcomes. Our team is dedicated to helping you succeed—with personalized support and tailored strategies.
+      </p>
+    </main>
+  </div>
+
+  <script>
+    // Content for each "page"
+    const pages = {
+      home: `
+        <h1>Welcome to Impact Returns</h1>
+        <p>
+          Where all your dreams come true.<br>
+          We provide innovative solutions for maximizing your returns and ensuring sustainable impact in today’s dynamic business landscape.
+          <br><br>
+          Partner with us to unlock your organization’s true potential, leverage expert insights, and achieve exceptional outcomes. Our team is dedicated to helping you succeed—with personalized support and tailored strategies.
+        </p>
+      `,
+      app: `
+        <h1>Process Steps & App</h1>
+        <div class="app-flex">
+          <table class="steps-table">
+            <tr>
+              <td class="icon-cell">
+                <svg width="28" height="28"><circle cx="14" cy="14" r="12" fill="#0088cc"/><text x="14" y="21" fill="#fff" font-size="16" text-anchor="middle" font-family="Arial" font-weight="bold">1</text></svg>
+              </td>
+              <td>First download template</td>
+            </tr>
+            <tr>
+              <td class="icon-cell">
+                <svg width="28" height="28"><circle cx="14" cy="14" r="12" fill="#44bb58"/><text x="14" y="21" fill="#fff" font-size="16" text-anchor="middle" font-family="Arial" font-weight="bold">2</text></svg>
+              </td>
+              <td>Fill in template</td>
+            </tr>
+            <tr>
+              <td class="icon-cell">
+                <svg width="28" height="28"><circle cx="14" cy="14" r="12" fill="#ff9900"/><text x="14" y="21" fill="#fff" font-size="16" text-anchor="middle" font-family="Arial" font-weight="bold">3</text></svg>
+              </td>
+              <td>Upload data and push go</td>
+            </tr>
+          </table>
+          <iframe
+            src="https://impact-returns-app.onrender.com/"
+            class="embed-app-iframe"
+            title="Impact Returns App"
+            allowfullscreen
+          ></iframe>
+        </div>
+      `,
+      blog: `
+        <h1>Blog: Understanding GHG Avoidance</h1>
+        <p>
+          Reducing greenhouse gas (<b>GHG</b>) emissions is crucial for a sustainable future.<br><br>
+          At Impact Returns, we champion <b>GHG avoidance</b>—interventions that prevent emissions from being generated in the first place.<br><br>
+          Effective strategies include investing in renewable energy, optimizing resource efficiency, and encouraging responsible consumption.
+          <br><br>
+          By prioritizing GHG avoidance, businesses can reduce their carbon footprint, comply with regulations, and demonstrate leadership in sustainability.<br>
+          Embrace GHG avoidance today for a cleaner, more resilient tomorrow.
+        </p>
+      `,
+      contact: `
+        <h1>Contact Us</h1>
+        <ul>
+          <li>General Inquiries: <a href="mailto:info@impactreturns.com">info@impactreturns.com</a></li>
+          <li>Support: <a href="mailto:support@impactreturns.com">support@impactreturns.com</a></li>
+          <li>Partnerships: <a href="mailto:partners@impactreturns.com">partners@impactreturns.com</a></li>
+          <li>Phone: <a href="tel:+441234567890">+44 1234 567890</a></li>
+          <li>Alternate: <a href="tel:+442079460958">+44 20 7946 0958</a></li>
+        </ul>
+      `
+    };
+
+    // Simple SPA behavior
+    const menuItems = document.querySelectorAll('.side-menu li');
+    const mainContent = document.getElementById('main-content');
+    menuItems.forEach(item => {
+      item.addEventListener('click', e => {
+        menuItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        const page = item.dataset.page;
+        mainContent.innerHTML = pages[page];
+      });
+    });
+  </script>
+</body>
+</html>
