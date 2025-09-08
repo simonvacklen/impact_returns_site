@@ -15,16 +15,15 @@
       background: #003366;
       color: white;
       padding: 24px 0;
-      /* changed alignment: */
       text-align: left;
       font-size: 2rem;
       letter-spacing: 0.07em;
       font-weight: bold;
       box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-      padding-left: 42px; /* move logo/text from the edge */
+      padding-left: 42px;
       display: flex;
       align-items: center;
-      gap: 18px; /* provides spacing between logo and text */
+      gap: 18px;
     }
     .header svg { margin-right: 12px; }
     .container {
@@ -90,6 +89,12 @@
       background: #fff;
       box-shadow: 0 4px 24px rgba(0,51,102,0.12);
     }
+    .app-info {
+      font-size: 1rem;
+      font-style: italic;
+      color: #666;
+      margin-bottom: 16px;
+    }
     @media (max-width: 900px) {
       .container {flex-direction: column;}
       .sidebar {width: 100%;}
@@ -104,7 +109,7 @@
     <!-- SVG logo: Impact Returns -->
     <svg height="36" viewBox="0 0 320 36" style="vertical-align:middle;">
       <rect width="36" height="36" rx="8" fill="#0088cc"></rect>
-      <text x="18" y="24" fill="#fff" font-size="20" text-anchor="middle" font-family="Arial" font-weight="bold">IR</text>
+      <text x="18" y="24" fill="#fff" font-size="20" text-anchor="left" font-family="Arial" font-weight="bold">IR</text>
     </svg>
     Impact Returns
   </div>
@@ -119,6 +124,9 @@
     <main class="main" id="main-content">
       <!-- Default: App page -->
       <h1>Process Steps & App</h1>
+      <div class="app-info">
+        The app will fall asleep if not used in 15 minutes, so the first time it will show all that black stuff, this will go away if we dont use the free tier server (£7 a month:-p)
+      </div>
       <div class="app-flex">
         <table class="steps-table">
           <tr>
@@ -150,10 +158,12 @@
     </main>
   </div>
   <script>
-    // Only 3 pages left
     const pages = {
       app: `
         <h1>Process Steps & App</h1>
+        <div class="app-info">
+          first time load bla blah
+        </div>
         <div class="app-flex">
           <table class="steps-table">
             <tr>
@@ -205,7 +215,7 @@
         </ul>
       `
     };
-    // SPA behavior
+    // SPA behavior for simple navigation
     const menuItems = document.querySelectorAll('.side-menu li');
     const mainContent = document.getElementById('main-content');
     menuItems.forEach(item => {
@@ -216,9 +226,8 @@
         mainContent.innerHTML = pages[page];
       });
     });
-    // Set default page to App
+    // Set default page to App on load
     mainContent.innerHTML = pages['app'];
-    // Mark the App menu as active
     menuItems.forEach(i => i.classList.remove('active'));
     menuItems[0].classList.add('active');
   </script>
