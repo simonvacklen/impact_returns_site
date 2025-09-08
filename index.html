@@ -15,12 +15,18 @@
       background: #003366;
       color: white;
       padding: 24px 0;
-      text-align: center;
+      /* changed alignment: */
+      text-align: left;
       font-size: 2rem;
       letter-spacing: 0.07em;
       font-weight: bold;
       box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      padding-left: 42px; /* move logo/text from the edge */
+      display: flex;
+      align-items: center;
+      gap: 18px; /* provides spacing between logo and text */
     }
+    .header svg { margin-right: 12px; }
     .container {
       display: flex;
       min-height: 80vh;
@@ -96,46 +102,56 @@
 <body>
   <div class="header">
     <!-- SVG logo: Impact Returns -->
-    <svg height="36" viewBox="0 0 320 36" style="vertical-align:middle; margin-right:18px;">
+    <svg height="36" viewBox="0 0 320 36" style="vertical-align:middle;">
       <rect width="36" height="36" rx="8" fill="#0088cc"></rect>
       <text x="18" y="24" fill="#fff" font-size="20" text-anchor="middle" font-family="Arial" font-weight="bold">IR</text>
     </svg>
     Impact Returns
   </div>
-
   <div class="container">
     <nav class="sidebar">
       <ul class="side-menu">
-        <li class="active" data-page="home">Home</li>
-        <li data-page="app">App</li>
+        <li class="active" data-page="app">App</li>
         <li data-page="blog">Blog</li>
         <li data-page="contact">Contact</li>
       </ul>
     </nav>
     <main class="main" id="main-content">
-      <!-- Default: Home -->
-      <h1>Welcome to Impact Returns</h1>
-      <p>
-        Where all your dreams come true.<br>
-        We provide innovative solutions for maximizing your returns and ensuring sustainable impact in today’s dynamic business landscape.
-        <br><br>
-        Partner with us to unlock your organization’s true potential, leverage expert insights, and achieve exceptional outcomes. Our team is dedicated to helping you succeed—with personalized support and tailored strategies.
-      </p>
+      <!-- Default: App page -->
+      <h1>Process Steps & App</h1>
+      <div class="app-flex">
+        <table class="steps-table">
+          <tr>
+            <td class="icon-cell">
+              <svg width="28" height="28"><circle cx="14" cy="14" r="12" fill="#0088cc"/><text x="14" y="21" fill="#fff" font-size="16" text-anchor="middle" font-family="Arial" font-weight="bold">1</text></svg>
+            </td>
+            <td>First download template</td>
+          </tr>
+          <tr>
+            <td class="icon-cell">
+              <svg width="28" height="28"><circle cx="14" cy="14" r="12" fill="#44bb58"/><text x="14" y="21" fill="#fff" font-size="16" text-anchor="middle" font-family="Arial" font-weight="bold">2</text></svg>
+            </td>
+            <td>Fill in template</td>
+          </tr>
+          <tr>
+            <td class="icon-cell">
+              <svg width="28" height="28"><circle cx="14" cy="14" r="12" fill="#ff9900"/><text x="14" y="21" fill="#fff" font-size="16" text-anchor="middle" font-family="Arial" font-weight="bold">3</text></svg>
+            </td>
+            <td>Upload data and push go</td>
+          </tr>
+        </table>
+        <iframe
+          src="https://impact-returns-app.onrender.com/"
+          class="embed-app-iframe"
+          title="Impact Returns App"
+          allowfullscreen
+        ></iframe>
+      </div>
     </main>
   </div>
-
   <script>
-    // Content for each "page"
+    // Only 3 pages left
     const pages = {
-      home: `
-        <h1>Welcome to Impact Returns</h1>
-        <p>
-          Where all your dreams come true.<br>
-          We provide innovative solutions for maximizing your returns and ensuring sustainable impact in today’s dynamic business landscape.
-          <br><br>
-          Partner with us to unlock your organization’s true potential, leverage expert insights, and achieve exceptional outcomes. Our team is dedicated to helping you succeed—with personalized support and tailored strategies.
-        </p>
-      `,
       app: `
         <h1>Process Steps & App</h1>
         <div class="app-flex">
@@ -189,8 +205,7 @@
         </ul>
       `
     };
-
-    // Simple SPA behavior
+    // SPA behavior
     const menuItems = document.querySelectorAll('.side-menu li');
     const mainContent = document.getElementById('main-content');
     menuItems.forEach(item => {
@@ -201,6 +216,11 @@
         mainContent.innerHTML = pages[page];
       });
     });
+    // Set default page to App
+    mainContent.innerHTML = pages['app'];
+    // Mark the App menu as active
+    menuItems.forEach(i => i.classList.remove('active'));
+    menuItems[0].classList.add('active');
   </script>
 </body>
 </html>
