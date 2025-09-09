@@ -81,12 +81,12 @@
     .app-flex {
       display: flex;
       gap: 32px;
-      flex-wrap: nowrap; /* prevent wrapping */
+      flex-wrap: nowrap;
       align-items: flex-start;
     }
     .steps-wrapper {
-      width: 350px; /* fixed width */
-      flex-shrink: 0; /* do not shrink */
+      width: 350px;
+      flex-shrink: 0;
     }
     .steps-table {
       border-collapse: collapse;
@@ -104,7 +104,7 @@
       width: 54px;
     }
     .embed-app-iframe {
-      flex-grow: 1; /* take remaining space */
+      flex-grow: 1;
       min-width: 340px;
       height: 340px;
       border: 1.5px solid #003366;
@@ -135,10 +135,10 @@
       }
       .app-flex {
         flex-direction: column;
-        flex-wrap: wrap; /* allow wrapping for smaller screens */
+        flex-wrap: wrap;
       }
       .steps-wrapper {
-        width: 100%; /* full width on small screens */
+        width: 100%;
         margin-bottom: 20px;
       }
       .embed-app-iframe {
@@ -175,95 +175,14 @@
         <li data-page="contact">Contact</li>
       </ul>
     </nav>
-    <main class="main" id="main-content">
-      <!-- Default: App page -->
-      <h1>Impact Returns</h1>
-      <div class="app-info">
-        The app will fall asleep every 15 minutes, so if you see the black screen, its the app starting and it will take a minute. this can be fixed with a trivial paid subscription.
-      </div>
-      <div class="app-flex">
-        <div class="steps-wrapper">
-          <table class="steps-table">
-            <tr>
-              <td class="icon-cell">
-                <svg width="28" height="28">
-                  <circle cx="14" cy="14" r="12" fill="#0088cc"></circle>
-                  <text
-                    x="14"
-                    y="21"
-                    fill="#fff"
-                    font-size="16"
-                    text-anchor="middle"
-                    font-family="Arial"
-                    font-weight="bold"
-                    >1</text
-                  >
-                </svg>
-              </td>
-              <td>
-                First download the excel template. If you are Kibii and only testing, you can 
-              download the pre-filled "simple report" version which can be uploaded directly into the app.
-                <span class="data-links">
-                  <a href="Data_intake_Simple_example.xlsx" download>Data_intake_Simple_example</a>
-                  &nbsp;and this&nbsp;
-                  <a href="Data_intake_XX.xlsx" download>Data_intake_XX</a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td class="icon-cell">
-                <svg width="28" height="28">
-                  <circle cx="14" cy="14" r="12" fill="#44bb58"></circle>
-                  <text
-                    x="14"
-                    y="21"
-                    fill="#fff"
-                    font-size="16"
-                    text-anchor="middle"
-                    font-family="Arial"
-                    font-weight="bold"
-                    >2</text
-                  >
-                </svg>
-              </td>
-              <td>Fill in template, it is indicated which fields are mandatory (will need to add detailed instructions</td>
-            </tr>
-            <tr>
-              <td class="icon-cell">
-                <svg width="28" height="28">
-                  <circle cx="14" cy="14" r="12" fill="#ff9900"></circle>
-                  <text
-                    x="14"
-                    y="21"
-                    fill="#fff"
-                    font-size="16"
-                    text-anchor="middle"
-                    font-family="Arial"
-                    font-weight="bold"
-                    >3</text
-                  >
-                </svg>
-              </td>
-              <td>After the data intake is populated, upload it with "Browse" and push "Process data" in order to generate a report, which can then be uploaded</td>
-            </tr>
-          </table>
-        </div>
-        <iframe
-          src="https://impact-returns-app.onrender.com/"
-          class="embed-app-iframe"
-          title="Impact Returns App"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </main>
+    <main class="main" id="main-content"></main>
   </div>
-
   <script>
     const pages = {
       app: `
         <h1>Impact Returns</h1>
         <div class="app-info">
-  The app will fall asleep every 15 minutes, so if you see the black screen, its the app starting and it will take a minute. this can be fixed with a trivial paid subscription.
+          The app will fall asleep every 15 minutes, so if you see the black screen, its the app starting and it will take a minute. this can be fixed with a trivial paid subscription.
         </div>
         <div class="app-flex">
           <div class="steps-wrapper">
@@ -285,13 +204,13 @@
                   </svg>
                 </td>
                 <td>
-  First download the excel template. If you are Kibii and only testing, you can 
-              download the pre-filled "simple report" version which can be uploaded directly into the app.
-                <span class="data-links">
-                  <a href="Data_intake_Simple_example.xlsx" download>Data_intake_Simple_example</a>
-                  &nbsp;and this&nbsp;
-                  <a href="Data_intake_XX.xlsx" download>Data_intake_XX</a>
-                </span>
+                  First download the excel template. If you are Kibii and only testing, you can 
+                  download the pre-filled "simple report" version which can be uploaded directly into the app.
+                  <span class="data-links">
+                    <a href="Data_intake_Simple_example.xlsx" download>Data_intake_Simple_example</a>
+                    &nbsp;and this&nbsp;
+                    <a href="Data_intake_XX.xlsx" download>Data_intake_XX</a>
+                  </span>
                 </td>
               </tr>
               <tr>
@@ -310,7 +229,7 @@
                     >
                   </svg>
                 </td>
-                <td>Fill in template</td>
+                <td>Fill in template, it is indicated which fields are mandatory (will need to add detailed instructions)</td>
               </tr>
               <tr>
                 <td class="icon-cell">
@@ -328,7 +247,7 @@
                     >
                   </svg>
                 </td>
-                <td>Upload data and push go</td>
+                <td>After the data intake is populated, upload it with "Browse" and push "Process data" in order to generate a report, which can then be uploaded</td>
               </tr>
             </table>
           </div>
@@ -365,19 +284,17 @@
     const menuItems = document.querySelectorAll('.side-menu li');
     const mainContent = document.getElementById('main-content');
     menuItems.forEach((item) => {
-      item.addEventListener('click', (e) => {
+      item.addEventListener('click', () => {
         menuItems.forEach((i) => i.classList.remove('active'));
         item.classList.add('active');
         const page = item.dataset.page;
         mainContent.innerHTML = pages[page];
       });
     });
+    // Initial page load: inject "app" page (no duplication possible)
     mainContent.innerHTML = pages['app'];
     menuItems.forEach((i) => i.classList.remove('active'));
-    menuItems[0].classList.add('active');
+    menuItems.classList.add('active');
   </script>
 </body>
 </html>
-
-
-
